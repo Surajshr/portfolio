@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     ScreenUtil.init(context);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Portfolio',
+      title: 'Suraj Shrestha',
       initialBinding: StoreBinding(),
       home: const HomeBaseView(),
     );

@@ -127,7 +127,7 @@ class _HomeSectionState extends State<HomeSection> {
                           html.window.open(url, '_blank');
                           final anchor = html.AnchorElement(href: url);
                           anchor.download =
-                              'suraj_shrestha.pdf'; // Set desired filename
+                              'suraj_shrestha_cv.pdf'; // Set desired filename
                           anchor.click();
                         },
                       ),
