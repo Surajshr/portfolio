@@ -61,12 +61,6 @@ class _HomeBaseViewState extends State<HomeBaseView> {
                   : FooterView(
                       footerKey: footerKey,
                     ),
-              // Obx(
-              //   () => Text(
-              //     key: contactKey,
-              //     storeController.isDrawerActive.toString(),
-              //   ),
-              // ),
             ],
           ),
         ),
@@ -113,6 +107,10 @@ class _HomeBaseViewState extends State<HomeBaseView> {
                                         await storeController.getWidgetsKey(
                                       selectedTab: clickedTabName,
                                     );
+                                    storeController.selectTabIcon(
+                                      selectedTabIcon:
+                                          RxString(appBarIcons[index]),
+                                    );
                                     Scrollable.ensureVisible(
                                       selectedKey.currentContext ?? context,
                                       curve: Curves.linear,
@@ -120,13 +118,19 @@ class _HomeBaseViewState extends State<HomeBaseView> {
                                           const Duration(milliseconds: 1000),
                                     );
                                   },
-                                  child: Padding(
-                                    padding: EdgeInsets.only(bottom: 16.h),
-                                    child: Image.asset(
-                                      height: 40.h,
-                                      width: 40.w,
-                                      appBarIcons[index],
-                                      fit: BoxFit.contain,
+                                  child: Obx(
+                                    () => Padding(
+                                      padding: EdgeInsets.only(bottom: 16.h),
+                                      child: SvgPicture.asset(
+                                        height: 40.h,
+                                        width: 40.h,
+                                        storeController.activeTabIcon.value
+                                                    .toString() ==
+                                                appBarIcons[index]
+                                            ? appBarActiveIcons[index]
+                                            : appBarIcons[index],
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 );

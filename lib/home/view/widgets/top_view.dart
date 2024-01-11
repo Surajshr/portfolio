@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:portfolio/home/logic/state_controller.dart';
 import 'package:portfolio/ui/ui.dart';
 
@@ -52,19 +53,30 @@ class _TopViewState extends State<TopView> {
                                 await widget.storeController.getWidgetsKey(
                               selectedTab: appBarTabs[index],
                             );
-                            print('currentKeyValue:$selectedKey');
+                            widget.storeController.selectTab(
+                              selectedTab: RxString(appBarTabs[index]),
+                            );
                             Scrollable.ensureVisible(
                               selectedKey.currentContext ?? context,
                               curve: Curves.linear,
                               duration: const Duration(milliseconds: 1000),
                             );
-                            print('currentlyClicked:${appBarTabs[index]}');
                           },
-                          child: Text(
-                            appBarTabs[index],
-                            style: GoogleFonts.getFont('Barlow').copyWith(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
+                          child: Obx(
+                            () => Text(
+                              appBarTabs[index],
+                              style: widget.storeController.activeTab.value
+                                          .toString() ==
+                                      appBarTabs[index]
+                                  ? GoogleFonts.getFont('Barlow').copyWith(
+                                      color: const Color(0xff009BDF),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                    )
+                                  : GoogleFonts.getFont('Barlow').copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                             ),
                           ),
                         ),

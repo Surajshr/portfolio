@@ -1,3 +1,5 @@
+import 'app_assets.dart';
+
 const List<String> appBarTabs = [
   'CONTACT',
   'PORTFOLIO',
@@ -7,10 +9,18 @@ const List<String> appBarTabs = [
   'HOME',
 ];
 const List<String> appBarIcons = [
-  'assets/menu/home.png',
-  'assets/menu/about.png',
-  'assets/menu/services.png',
-  'assets/menu/experience.png',
-  'assets/menu/portfolio.png',
-  'assets/menu/contact.png',
+  Assets.home,
+  Assets.about,
+  Assets.service,
+  Assets.experience,
+  Assets.portfolio,
+  Assets.contact,
+];
+const List<String> appBarActiveIcons = [
+  Assets.homeActive,
+  Assets.aboutActive,
+  Assets.serviceActive,
+  Assets.experienceActive,
+  Assets.portfolioAction,
+  Assets.contactActive,
 ];
